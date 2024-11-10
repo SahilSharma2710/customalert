@@ -58,7 +58,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.example"
             artifactId = "customalert"
-            version = "1.0.0"
+            version = "2.0.0"
 
             afterEvaluate{
                 from(components["release"])
