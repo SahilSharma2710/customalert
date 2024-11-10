@@ -61,30 +61,21 @@ dependencies {
 }
 
 //publishing {
-//    publications {
-//        register<MavenPublication>("release") {
-//            groupId = "com.example"
-//            artifactId = "customalert"
-//            version = "2.3.0"
-//
-//            afterEvaluate{
-//                from(components["release"])
-//            }
-//        }
-//
-//    }
-//}
-
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            afterEvaluate {
                 from(components["release"])
-
-                groupId = "com.example"
-                artifactId = "customalert"
-                version = "2.3.0"
             }
+
+            groupId = "com.github.SahilSharma2710"  // Replace with your GitHub username
+            artifactId = "customalert"
+            version = "2.4.0"  // Use your desired version
         }
     }
+}
+
+// Optional: Ensure publishing depends on required tasks
+tasks.named("publishToMavenLocal") {
+    dependsOn("assemble")
 }
