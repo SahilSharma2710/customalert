@@ -26,11 +26,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -58,7 +58,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.example"
             artifactId = "customalert"
-            version = "2.2.0"
+            version = "2.3.0"
 
             afterEvaluate{
                 from(components["release"])
