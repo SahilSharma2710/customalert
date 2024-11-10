@@ -26,14 +26,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 }
 
@@ -53,17 +60,31 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "com.example"
-            artifactId = "customalert"
-            version = "2.3.0"
+//publishing {
+//    publications {
+//        register<MavenPublication>("release") {
+//            groupId = "com.example"
+//            artifactId = "customalert"
+//            version = "2.3.0"
+//
+//            afterEvaluate{
+//                from(components["release"])
+//            }
+//        }
+//
+//    }
+//}
 
-            afterEvaluate{
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
                 from(components["release"])
+
+                groupId = "com.example"
+                artifactId = "customalert"
+                version = "2.3.0"
             }
         }
-
     }
 }
