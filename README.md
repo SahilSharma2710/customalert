@@ -24,17 +24,12 @@ To include this library in your Android project, use JitPack to add it as a depe
 		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 		repositories {
 			mavenCentral()
-			maven { url 'https://jitpack.io' }
+			maven(url = "https://jitpack.io")
 		}
 	}
     ```
 
-### Step 2. Add it in your root build.gradle at the end of repositories: 
-    ```gradle
-    dependencies {
-    maven(url = "https://jitpack.io")
-    ```
-### Step 3. Add the dependency :
+### Step 2. Add the dependency :
     ```gradle
     dependencies {
        implementation 'com.github.SahilSharma2710:customalert:Tag'
