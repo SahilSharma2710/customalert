@@ -58,7 +58,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.SahilSharma2710"
             artifactId = "customalert"
-            version = "2.8.0"
+            version = "2.10.0"
 
             pom {
                 description.set("initial release")
