@@ -36,12 +36,6 @@ android {
         compose = true
     }
 
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
 }
 
 dependencies {
@@ -60,22 +54,15 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-//publishing {
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            afterEvaluate {
-                from(components["release"])
+afterEvaluate {
+    publishing {
+        publications {
+            create("release", MavenPublication::class) {
+                from(components.getByName("release"))
+                groupId = "com.example"
+                artifactId = "customalert"
+                version = "2.6.0"
             }
-
-            groupId = "com.github.SahilSharma2710"  // Replace with your GitHub username
-            artifactId = "customalert"
-            version = "2.4.0"  // Use your desired version
         }
     }
-}
-
-// Optional: Ensure publishing depends on required tasks
-tasks.named("publishToMavenLocal") {
-    dependsOn("assemble")
 }
