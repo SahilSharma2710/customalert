@@ -55,10 +55,17 @@ dependencies {
 
 publishing {
     publications {
-        register<MavenPublication>("release"){
-            afterEvaluate {
-                from(components["release"])
+        create<MavenPublication>("maven") {
+            groupId = "com.github.SahilSharma2710"
+            artifactId = "customalert"
+            version = "2.8.0"
+
+            pom {
+                description.set("initial release")
             }
         }
+    }
+    repositories {
+        mavenLocal()
     }
 }
