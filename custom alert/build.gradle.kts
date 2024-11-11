@@ -35,7 +35,6 @@ android {
     buildFeatures {
         compose = true
     }
-
 }
 
 dependencies {
@@ -54,14 +53,11 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create("release", MavenPublication::class) {
-                from(components.getByName("release"))
-                groupId = "com.example"
-                artifactId = "customalert"
-                version = "2.6.0"
+publishing {
+    publications {
+        register<MavenPublication>("release"){
+            afterEvaluate {
+                from(components["release"])
             }
         }
     }
